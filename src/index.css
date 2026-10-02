@@ -1,11 +1,15 @@
 @import "tailwindcss";
 @import "tw-animate-css";
-@import "@fontsource-variable/inter";
+@import "@fontsource/vazirmatn/400.css";
+@import "@fontsource/vazirmatn/500.css";
+@import "@fontsource/vazirmatn/600.css";
+@import "@fontsource/vazirmatn/700.css";
+@import "./rtl.css";
 
 @custom-variant dark (&:is(.dark *));
 
 @theme inline {
-  --font-sans: "Inter Variable", ui-sans-serif, system-ui, sans-serif;
+  --font-sans: Vazirmatn, ui-sans-serif, system-ui, sans-serif;
   --radius-sm: calc(var(--radius) - 4px);
   --radius-md: calc(var(--radius) - 2px);
   --radius-lg: var(--radius);
@@ -184,7 +188,7 @@ input[type="time"] {
 }
 
 body {
-  font-family: "Inter Variable", ui-sans-serif, system-ui, sans-serif;
+  font-family: Vazirmatn, "Inter Variable", ui-sans-serif, system-ui, sans-serif;
 }
 
 /* The mobile pull-to-refresh (see layout/PullToRefresh.tsx) owns the overscroll

@@ -146,8 +146,6 @@ export const CRM = ({
     img.src = `https://atomic-crm-telemetry.marmelab.com/atomic-crm-telemetry?domain=${window.location.hostname}`;
   }, [disableTelemetry]);
 
-  // Seed the store with CRM prop values if not already stored
-  // (backwards compatibility for prop-based config)
   useEffect(() => {
     if (!store.getItem(CONFIGURATION_STORE_KEY)) {
       store.setItem(CONFIGURATION_STORE_KEY, {
@@ -168,8 +166,6 @@ export const CRM = ({
 
   const isMobile = useIsMobile();
 
-  // on login, pre-fetch the configuration to avoid a flickering
-  // when accessing the app for the first time
   const wrappedAuthProvider = useMemo<AuthProvider>(
     () => ({
       ...authProvider,
@@ -181,7 +177,6 @@ export const CRM = ({
             store.setItem(CONFIGURATION_STORE_KEY, config);
           }
         } catch {
-          // Non-critical: config will load via useConfigurationLoader
         }
         return result;
       },
@@ -198,7 +193,6 @@ export const CRM = ({
             store.setItem(CONFIGURATION_STORE_KEY, config);
           }
         } catch {
-          // Non-critical: config will load via useConfigurationLoader
         }
         return result;
       },
@@ -206,7 +200,6 @@ export const CRM = ({
         try {
           store.removeItem(CONFIGURATION_STORE_KEY);
         } catch {
-          // Ignore
         }
         return authProvider.logout(params);
       },
